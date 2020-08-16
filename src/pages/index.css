@@ -95,7 +95,14 @@ select {
     padding-left: 0;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.markdown-body ul {
     list-style-type: disc !important;
+}
+
+.markdown-body ol {
+    list-style-type: decimal !important;
 }
 
 .markdown-body ol ol,

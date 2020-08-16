@@ -13,8 +13,6 @@ $$
 m = qn + r, 0 \leq r < n
 $$
 
-- TODO: Prove that r is unique
-
 - $q$ is the quotient, $r$ is the remainder
 - If $r = 0$, then:
     - $n$ divides $m$: ($n | m$)
@@ -98,6 +96,21 @@ $$
 # More modular properties and proof
 If $a \equiv b \pmod n$ and $b \equiv c \pmod n$, then $a \equiv c \pmod n$
 
+$$
+\begin{aligned}
+a \equiv b \pmod n &\Rightarrow a = qn + b \\
+b \equiv c \pmod n &\Rightarrow b = pn + c
+\end{aligned}
+$$
+
+Hence, 
+$$
+\begin{aligned}
+a &= qn + b \\
+  &= qn + pn + c \\
+  &= n(p+q) + c \Rightarrow a \equiv c \pmod n
+\end{aligned}
+$$
 --- 
 
 If $a \equiv b \pmod n$ and $c \equiv d \pmod n$, then $(a + c) \equiv (b + d) \pmod n$
@@ -131,3 +144,15 @@ $$
 --- 
 
 If $a \equiv b \pmod n$ and $k \in \Z$, then $a^k \equiv b^k \pmod n$
+
+$$
+a \equiv b \pmod n \Rightarrow a = qn + b 
+$$
+
+$$
+\begin{aligned}
+a^k &= (qn + b)^k \\
+&= {n \choose 0} b^k (qn)^0 + {n \choose 1} b^{k-1}(qn)^1 + \cdots + {n \choose n} b^0 (qn)^k \\
+&= b^k + n\left( {n \choose 1} b^{k-1}q^1n^0 + \cdots + {n \choose n} b^0 q^k n^{k-1} \right) \Rightarrow a^k \equiv b^k \pmod n
+\end{aligned}
+$$

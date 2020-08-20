@@ -46,4 +46,3 @@ High speed, low cost, small size |
 - Serial transmission is less complex and is cheaper (less serial lines to transmit data), however requires more time
 - Parallel transmission is more complex (due to problems such as [race conditions](https://en.wikipedia.org/wiki/Race_condition)), however can complete quicker
 
-

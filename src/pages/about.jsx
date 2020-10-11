@@ -3,7 +3,6 @@ import Layout from '../components/Layout'
 import { graphql } from 'gatsby'
 
 export default function About({ data }) {
-    console.log(data)
     const links = data.site.siteMetadata.contacts
     return (
         <Layout title="About">

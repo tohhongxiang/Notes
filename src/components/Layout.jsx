@@ -44,11 +44,7 @@ export default function Layout({ children, title }) {
                 </ul>
             </nav>
             <div className="flex flex-1 overflow-hidden">
-                <ul className="overflow-y-auto flex-0 border-solid border-r border-gray-300 w-64">
-                    {Object.values(directories).map(directory => (
-                        <li key={directory.link}><Sidebar {...directory} /></li>
-                    ))}
-                </ul>
+                <Sidebar directories={directories} />
                 <main className="flex-1 overflow-y-auto" id="main-page-content">
                     {children}
                 </main>

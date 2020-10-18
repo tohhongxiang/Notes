@@ -4,35 +4,31 @@ import ArrowDown from '../../static/icons/arrow_down.svg'
 import ArrowRight from '../../static/icons/arrow_right.svg'
 import { useLocation } from '@reach/router'
 
-function SidebarNode({ link, title, children }) {
+function SidebarNode({ link, title, children, ...props }) {
     const { pathname: currentPath } = useLocation()
     const [isOpen, setIsOpen] = useState(childrenIsActive({ link, title, children }, decodeURI(currentPath)))
 
-    if (children && Object.keys(children).length > 0) {
-        return <div>
-            <div className="flex justify-between items-center p-4 hover:bg-gray-100">
-                <p><strong>{title}</strong></p>
-                <button className="px-2 py-1 focus:outline-none" onClick={() => setIsOpen(c => !c)}>{isOpen ? <img src={ArrowDown} alt="collapse" /> : <img src={ArrowRight} alt="expand" />}</button>
-            </div>
-            {isOpen && (
-                <ul className="border-l-4 border-solid border-gray-400 ml-4">{Object.values(children).map(child => <SidebarNode key={child.link} {...child} />)}</ul>
-            )}
-        </div>
-    }
+    const hasChildren = children && Object.keys(children).length > 0
 
-    return (
-        <div className="flex hover:bg-gray-100">
-            <Link to={link} className="p-4 w-full" activeClassName="font-bold bg-gray-300">{title}</Link>
+    return <>
+        <div {...props} className={`flex justify-between items-center text-gray-600 font-medium hover:text-gray-900 rounded-r-lg overflow-hidden ${hasChildren ? "p-4" : ""} ${props.className}`}>
+            {hasChildren ? <>
+                <p className={`text-gray-700 ${isOpen ? "text-gray-900" : ""}`}><strong>{title}</strong></p>
+                <button className="px-2 py-1 focus:outline-none" onClick={() => setIsOpen(c => !c)}>{isOpen ? <img src={ArrowDown} alt="collapse" /> : <img src={ArrowRight} alt="expand" />}</button>
+            </> : <Link to={link} className="w-full p-4" {...props} activeClassName={`font-bold bg-gray-200 text-gray-900 ${props.className}`}>{title}</Link>}
         </div>
-    )
+        {isOpen && (
+            <ul className="border-l-4 border-solid border-gray-200 ml-4">{Object.values(children).map(child => <SidebarNode key={child.link} {...child} />)}</ul>
+        )}
+    </>
 }
 
-export default function Sidebar({ directories }) {
+export default function Sidebar({ directories, ...props }) {
     const [isOpen, setIsOpen] = useState(false)
 
-    return <div>
+    return <div {...props}>
         <button className="absolute bottom-0 right-0 m-16 p-4 bg-blue-600 rounded-full outline-none z-10 sm:hidden" onClick={() => setIsOpen(c => !c)}>{isOpen ? "❌" : "🍔"}</button>
-        <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 border-solid border-r border-gray-300 w-64 sm:ml-0 relative ${isOpen ? 'ml-0' : '-ml-64'} z-10 bg-white h-full`}>
+        <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 w-64 sm:ml-0 relative ${isOpen ? 'ml-0' : '-ml-64'} h-full`}>
             {Object.values(directories).map(directory => (
                 <li key={directory.link}><SidebarNode {...directory} /></li>
             ))}

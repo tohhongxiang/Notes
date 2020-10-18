@@ -1,7 +1,7 @@
 # Matrix Algebra
 
 # Matrix multiplication
-- $A(Bx) is produced from $x$ by a *composition* of 2 linear transformations B, then A
+- $A(Bx)$ is produced from $x$ by a *composition* of 2 linear transformations B, then A
 - We can represent the 2 transformations with a single matrix, by multiplying 
 $$
 A(Bx) = (AB)x

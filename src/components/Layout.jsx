@@ -34,7 +34,7 @@ export default function Layout({ children, title }) {
     return (
         <div className="h-screen flex flex-col overflow-hidden">
             <Helmet title={title} />
-            <nav className="mx-auto p-4 flex justify-between w-full flex-0 border-solid border-b border-gray-300">
+            <nav className="mx-auto p-4 flex justify-between w-full flex-0 border-solid shadow z-10">
                 <Link to="/">
                     <h3 className="font-bold text-xl">{data.site.siteMetadata.title}</h3>
                 </Link>
@@ -45,7 +45,7 @@ export default function Layout({ children, title }) {
             </nav>
             <div className="flex flex-1 overflow-hidden">
                 <Sidebar directories={directories} />
-                <main className="flex-1 overflow-y-auto" id="main-page-content">
+                <main className="flex-1 overflow-y-auto p-4 md:p-12" id="main-page-content">
                     {children}
                 </main>
             </div>

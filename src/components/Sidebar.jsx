@@ -6,6 +6,7 @@ import { useLocation } from '@reach/router'
 
 function SidebarNode({ link, title, children, ...props }) {
     const { pathname: currentPath } = useLocation()
+    console.log({ currentPath })
     const [isOpen, setIsOpen] = useState(childrenIsActive({ link, title, children }, decodeURI(currentPath)))
 
     const hasChildren = children && Object.keys(children).length > 0
@@ -18,7 +19,9 @@ function SidebarNode({ link, title, children, ...props }) {
             </> : <Link to={link} className="w-full p-4" {...props} activeClassName={`font-bold bg-gray-200 text-gray-900 ${props.className}`}>{title}</Link>}
         </div>
         {isOpen && (
-            <ul className="border-l-4 border-solid border-gray-200 ml-4">{Object.values(children).map(child => <SidebarNode key={child.link} {...child} />)}</ul>
+            <ul className="border-l-4 border-solid border-gray-200 ml-4">
+                {Object.values(children).map(child => <li key={child.link}><SidebarNode {...child} /></li>)}
+            </ul>
         )}
     </>
 }
@@ -27,8 +30,8 @@ export default function Sidebar({ directories, ...props }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return <div {...props}>
-        <button className="absolute bottom-0 right-0 m-16 p-4 bg-blue-600 rounded-full outline-none z-10 sm:hidden" onClick={() => setIsOpen(c => !c)}>{isOpen ? "❌" : "🍔"}</button>
-        <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 w-64 sm:ml-0 relative ${isOpen ? 'ml-0' : '-ml-64'} h-full`}>
+        <button className="fixed bottom-0 right-0 m-16 p-4 bg-blue-600 rounded-full outline-none z-10 sm:hidden" onClick={() => setIsOpen(c => !c)}>{isOpen ? "❌" : "🍔"}</button>
+        <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 w-64 sm:ml-0 bg-white relative ${isOpen ? 'ml-0' : '-ml-64'} h-full`}>
             {Object.values(directories).map(directory => (
                 <li key={directory.link}><SidebarNode {...directory} /></li>
             ))}

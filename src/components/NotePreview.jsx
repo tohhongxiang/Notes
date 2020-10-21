@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 
 export default function NotePreview({ title, excerpt, date, slug }) {
     const path = slug.split('/').filter(Boolean)
-    console.log(excerpt)
 
     return (
         <Link to={slug}>

@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import ArrowDown from '../../static/icons/arrow_down.svg'
 import ArrowRight from '../../static/icons/arrow_right.svg'
 import { useLocation } from '@reach/router'
 
 function SidebarNode({ link, title, children, ...props }) {
-    const { pathname: currentPath, ...rest } = useLocation()
-    console.log({ rest })
-    const [isOpen, setIsOpen] = useState(childrenIsActive({ link, title, children }, decodeURI(currentPath)))
+    const data = useStaticQuery(graphql`
+        query GetSitePathPrefix {
+            site {
+                pathPrefix
+            }
+        }
+    `)
+
+    const { pathname: currentPath } = useLocation()
+    console.log({ currentPath, pathPrefix: data.site.pathPrefix, link, active: decodeURI(currentPath).replace(data.site.pathPrefix, '') })
+    const [isOpen, setIsOpen] = useState(childrenIsActive({ link: link, title, children }, decodeURI(currentPath).replace(data.site.pathPrefix, '')))
 
     const hasChildren = children && Object.keys(children).length > 0
 

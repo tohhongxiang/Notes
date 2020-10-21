@@ -6,7 +6,7 @@
 
 module.exports = {
     /* Your site config here */
-    pathPrefix: "/Notes",
+    pathPrefix: "Notes",
     siteMetadata: {
         title: "THX",
         contacts: [{

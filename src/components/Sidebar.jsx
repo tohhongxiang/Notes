@@ -5,8 +5,8 @@ import ArrowRight from '../../static/icons/arrow_right.svg'
 import { useLocation } from '@reach/router'
 
 function SidebarNode({ link, title, children, ...props }) {
-    const { pathname: currentPath } = useLocation()
-    console.log({ currentPath })
+    const { pathname: currentPath, ...rest } = useLocation()
+    console.log({ rest })
     const [isOpen, setIsOpen] = useState(childrenIsActive({ link, title, children }, decodeURI(currentPath)))
 
     const hasChildren = children && Object.keys(children).length > 0

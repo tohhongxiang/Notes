@@ -14,7 +14,6 @@ function SidebarNode({ link, title, children, ...props }) {
     `)
 
     const { pathname: currentPath } = useLocation()
-    console.log({ currentPath, pathPrefix: data.site.pathPrefix, link, active: decodeURI(currentPath).replace(data.site.pathPrefix, '') })
     const [isOpen, setIsOpen] = useState(childrenIsActive({ link: link, title, children }, decodeURI(currentPath).replace(data.site.pathPrefix, '')))
 
     const hasChildren = children && Object.keys(children).length > 0

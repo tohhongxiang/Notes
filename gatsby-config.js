@@ -17,6 +17,10 @@ module.exports = {
             title: "LinkedIn",
             link: "https://www.linkedin.com/in/toh-hong-xiang-31551118b/",
             icon: "/icons/linkedin.svg"
+        }, {
+            title: "Email",
+            link: "mailto:tohhongxiang@gmail.com",
+            icon: "/icons/gmail.svg"
         }]
     },
     plugins: [

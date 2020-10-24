@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from '../components/Layout'
+import Layout from '../components/NotesLayout'
 import { graphql, Link } from 'gatsby'
 import NotePreview from '../components/NotePreview'
 import NextPage from '../../static/icons/next_page.svg'

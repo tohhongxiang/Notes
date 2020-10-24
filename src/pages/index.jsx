@@ -1,69 +1,49 @@
 import React from "react"
-// import Layout from '../components/Layout'
-import { graphql, useStaticQuery } from 'gatsby'
-// import NotePreview from '../components/NotePreview'
+import { Link } from 'gatsby'
 import "./index.css"
-import { Redirect } from '@reach/router'
+import { Helmet } from "react-helmet"
+import { graphql } from 'gatsby'
 
-export default function Home() {
-	console.log(process.env.NODE_ENV)
-	const data = useStaticQuery(graphql`
-        query Redirect {
-            site {
-                pathPrefix
-            }
-        }
-	`)
-	
-	if (process.env.NODE_ENV === 'development') return <Redirect to={`/posts`} noThrow />
-	return <Redirect to={`${data.site.pathPrefix}/posts`} noThrow />
+
+export default function Home({ data }) {
+    const links = data.site.siteMetadata.contacts
+    return (
+        <div className="flex flex-col justify-center p-4 text-center">
+            <Helmet title="Home" />
+            <div className="pt-24 pb-12">
+                <h1 className="font-extrabold text-6xl">Toh Hong Xiang</h1>
+                <p className="font-medium tracking-wide text-gray-700">React/Python developer, currently studying in NTU</p>
+            </div>
+            <ul className="flex justify-center flex-wrap">
+                {links.map(link => (
+                    <li className="m-4 opacity-75 hover:opacity-100" key={link.link}>
+                        <a target="_blank" rel="noreferrer noopener" href={link.link}>
+                            <img width={64} height={64} src={link.icon} alt={link.title} />
+                            <p className="text-gray-700 font-medium mt-2">{link.title}</p>
+                        </a>
+                    </li>
+                ))}
+            </ul>
+            <ul className="p-8 mt-8 sticky flex justify-around">
+                <li><Link to="/about" activeClassName="font-bold">About</Link></li>
+                <li><Link to="/projects" activeClassName="font-bold">Projects</Link></li>
+                <li><Link to="/notes" activeClassName="font-bold">Notes</Link></li>
+            </ul>
+        </div>
+    )
 }
 
-// export default function Home({ data }) {
-// 	// const posts = data.allMdx.edges
-// 	return (
-// 		<Layout title="Home">
-// 			<p>Hi</p>
-// 			<div className="p-8 overflow-y-auto mx-auto max-w-3xl">
-// 				<header className="mb-4">
-// 					<h1 className="text-4xl">THX's university notes</h1>
-// 					<p>Select a note to view</p>
-// 				</header>
-// 				<ul className="mx-auto">
-// 					{posts.map(({ node }) => (
-// 						<NotePreview key={node.id} {...{ title: node.frontmatter.title, date: node.frontmatter.date, slug: node.fields.slug, excerpt: node.excerpt }} />
-// 					))}
-// 				</ul>
-// 			</div>
-// 		</Layout>
-// 	)
-// }
-
-// export const query = graphql`
-//   query GetAllMarkdown($skip: Int!, $limit: Int!) {
-//     allMdx(
-// 		sort: { 
-// 			order: DESC, 
-// 			fields: [frontmatter___date],
-// 		},
-// 		skip: $skip
-// 		limit: $limit
-// 	) {
-// 		totalCount
-// 		edges {
-// 			node {
-// 				id
-// 				timeToRead
-// 				frontmatter {
-// 					title
-// 					date(formatString: "DD MMMM, YYYY")
-// 			}
-// 			fields {
-// 				slug
-// 			}
-// 			excerpt
-// 			}
-// 		}
-//     }
-//   }
-// `
+export const query = graphql`
+query {
+    site {
+        siteMetadata {
+            contacts {
+                icon
+                link
+                title
+            }
+            title
+        }
+    }
+}
+`

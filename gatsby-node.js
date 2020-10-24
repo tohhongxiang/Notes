@@ -24,7 +24,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     }
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async({ graphql, actions }) => {
     const result = await graphql(`
     query {
         allMdx(sort: { 
@@ -46,7 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     Array.from({ length: numberOfPages }).forEach((_, pageNumber) => {
         createPage({
-            path: pageNumber === 0 ? `/posts` : `/posts/${pageNumber + 1}`,
+            path: pageNumber === 0 ? `/notes` : `/notes/${pageNumber + 1}`,
             component: path.resolve("./src/templates/post-list.jsx"),
             context: {
                 limit: postsPerPage,

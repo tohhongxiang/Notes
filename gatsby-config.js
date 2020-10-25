@@ -12,15 +12,15 @@ module.exports = {
         contacts: [{
             title: "Github",
             link: "https://github.com/tohhongxiang123",
-            icon: "/icons/github.svg"
+            icon: "github.svg"
         }, {
             title: "LinkedIn",
             link: "https://www.linkedin.com/in/toh-hong-xiang-31551118b/",
-            icon: "/icons/linkedin.svg"
+            icon: "linkedin.svg"
         }, {
             title: "Email",
             link: "mailto:tohhongxiang@gmail.com",
-            icon: "/icons/gmail.svg"
+            icon: "gmail.svg"
         }]
     },
     plugins: [

@@ -38,7 +38,7 @@ export default function Sidebar({ directories, ...props }) {
 
     return <div {...props}>
         <button className="fixed bottom-0 right-0 m-16 p-4 bg-blue-600 rounded-full outline-none z-10 sm:hidden" onClick={() => setIsOpen(c => !c)}>{isOpen ? "❌" : "🍔"}</button>
-        <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 w-64 sm:ml-0 bg-white relative ${isOpen ? 'ml-0' : '-ml-64'} h-full`}>
+        <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 w-64 sm:ml-0 bg-white ${isOpen ? 'ml-0' : '-ml-64'} relative h-full`}>
             {Object.values(directories).map(directory => (
                 <li key={directory.link}><SidebarNode {...directory} /></li>
             ))}

@@ -8,7 +8,8 @@ import { Redirect } from '@reach/router'
 
 
 export default function Home({ data }) {
-    return <Redirect noThrow from="/" to='/notes' />
+    const redirectTo = process.env.NODE_ENV === 'development' ? '/notes' : `${data.site.pathPrefix}/notes`
+    return <Redirect noThrow from="/" to={redirectTo} />
 
     // const contactLinks = data.site.siteMetadata.contacts
     // const pageLinks = ["projects", "notes"].map(name => ({ link: `/${name}`, title: capitalizeFirstLetter(name)}))
@@ -43,6 +44,7 @@ export default function Home({ data }) {
 export const query = graphql`
 query {
     site {
+        pathPrefix
         siteMetadata {
             contacts {
                 icon

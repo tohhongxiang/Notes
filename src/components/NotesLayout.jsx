@@ -56,7 +56,7 @@ function generateDirectoryStructure(edges) {
         } else {
             let currentDirectory = allDirectories
             while (paths.length > 1) {
-                if (!allDirectories.hasOwnProperty(paths[0])) {
+                if (!currentDirectory.hasOwnProperty(paths[0])) {
                     currentDirectory[paths[0]] = { link: paths[0], title: paths[0], children: {} }
                 }
                 currentDirectory = currentDirectory[paths.shift()].children

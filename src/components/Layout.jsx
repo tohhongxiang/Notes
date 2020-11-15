@@ -23,6 +23,7 @@ export default function Layout({ children, title }) {
                 <ul className="flex">
                     <li><Link to="/" className="mr-4" activeClassName="font-bold">Home</Link></li>
                     <li><Link to="/projects" className="mr-4" activeClassName="font-bold">Projects</Link></li>
+                    <li><Link to="/edit" className="mr-4" activeClassName="font-bold">Editor</Link></li>
                     <li><Link to="/notes" activeClassName="font-bold">Notes</Link></li>
                 </ul>
             </TopNavigation>

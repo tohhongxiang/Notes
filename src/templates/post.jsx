@@ -9,6 +9,7 @@ import Scrollspy from 'react-scrollspy'
 
 export default function BlogPost({ data }) {
 	const post = data.mdx
+	console.log(post)
 
 	return (
 		<Layout title={post.frontmatter.title}>

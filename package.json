@@ -14,6 +14,7 @@
         "deploy": "gatsby build --prefix-paths && gh-pages -d public"
     },
     "dependencies": {
+        "@loadable/component": "^5.14.1",
         "@mdx-js/mdx": "^1.6.16",
         "@mdx-js/react": "^1.6.16",
         "gatsby": "^2.25.4",

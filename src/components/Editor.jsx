@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import MonacoEditor from 'react-monaco-editor'
 import RemarkGfmPlugin from 'remark-gfm'
 import RemarkMathPlugin from 'remark-math'
 import MathJax from 'react-mathjax2'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import loadable from '@loadable/component'
 
+const MonacoEditor = loadable(() => import('react-monaco-editor'))
 export default function Editor() {
     const [text, setText] = useState('')
+
     return (
         <div className="grid grid-cols-2 h-full overflow-y-hidden">
             <MonacoEditor

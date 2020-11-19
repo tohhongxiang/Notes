@@ -8,7 +8,7 @@ import { Redirect } from '@reach/router'
 
 
 export default function Home({ data }) {
-    const redirectTo = process.env.NODE_ENV === 'development' ? '/notes' : `${data.site.pathPrefix}/notes`
+    const redirectTo = process.env.NODE_ENV === 'development' ? '/notes/' : `${data.site.pathPrefix}/notes/`
     return <Redirect noThrow from="/" to={redirectTo} />
 
     // const contactLinks = data.site.siteMetadata.contacts

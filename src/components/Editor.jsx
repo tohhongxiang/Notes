@@ -6,10 +6,22 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import loadable from '@loadable/component'
+import Button from './Button'
 
 const MonacoEditor = loadable(() => import('react-monaco-editor'))
 export default function Editor() {
     const [text, setText] = useState('')
+
+    const downloadText = () => {
+        const element = document.createElement('a')
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text))
+        element.setAttribute('download', 'test.md')
+
+        element.style.display = 'none'
+        document.body.appendChild(element)
+        element.click()
+        document.body.removeChild(element)
+    }
 
     return (
         <div className="grid grid-cols-2 h-full overflow-y-hidden">
@@ -22,6 +34,7 @@ export default function Editor() {
             <div className="p-8 overflow-y-scroll">
                 <MarkdownRenderer children={text} />
             </div>
+                <Button className="fixed m-16 bottom-0 right-0" onClick={downloadText}>Download</Button>
         </div>
     )
 }

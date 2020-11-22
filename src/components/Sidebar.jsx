@@ -3,6 +3,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import ArrowDown from '../../static/icons/arrow_down.svg'
 import ArrowRight from '../../static/icons/arrow_right.svg'
 import { useLocation } from '@reach/router'
+import Button from './Button'
 
 function SidebarNode({ link, title, children, ...props }) {
     const data = useStaticQuery(graphql`
@@ -22,7 +23,7 @@ function SidebarNode({ link, title, children, ...props }) {
         <div {...props} className={`flex justify-between items-center text-gray-600 font-medium hover:text-gray-900 rounded-r-lg overflow-hidden ${hasChildren ? "p-4" : ""} ${props.className}`}>
             {hasChildren ? <>
                 <p className={`text-gray-700 ${isOpen ? "text-gray-900" : ""}`}><strong>{title}</strong></p>
-                <button className="px-2 py-1 focus:outline-none" onClick={() => setIsOpen(c => !c)}>{isOpen ? <img src={ArrowDown} alt="collapse" /> : <img src={ArrowRight} alt="expand" />}</button>
+                <button className="flex-none px-2 py-1 focus:outline-none" onClick={() => setIsOpen(c => !c)}>{isOpen ? <img src={ArrowDown} alt="collapse" /> : <img src={ArrowRight} alt="expand" />}</button>
             </> : <Link to={link} className="w-full p-4" {...props} activeClassName={`font-bold bg-gray-200 text-gray-900 ${props.className}`}>{title}</Link>}
         </div>
         {isOpen && (
@@ -37,7 +38,7 @@ export default function Sidebar({ directories, ...props }) {
     const [isOpen, setIsOpen] = useState(false)
 
     return <div {...props}>
-        <button className="fixed bottom-0 right-0 m-16 p-4 bg-blue-600 rounded-full outline-none z-10 sm:hidden" onClick={() => setIsOpen(c => !c)}>{isOpen ? "❌" : "🍔"}</button>
+        <Button className="fixed bottom-0 right-0 m-16 outline-none z-10 sm:hidden" onClick={() => setIsOpen(c => !c)}>{isOpen ? "Close" : "View"}</Button>
         <ul className={`transition-all duration-200 ease-in-out overflow-y-auto flex-0 w-64 sm:ml-0 bg-white ${isOpen ? 'ml-0' : '-ml-64'} relative h-full`}>
             {Object.values(directories).map(directory => (
                 <li key={directory.link}><SidebarNode {...directory} /></li>

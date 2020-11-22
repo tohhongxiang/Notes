@@ -25,3 +25,4 @@
 - Propose the value of using your product to customers
 - Graphs/statistics/charts etc for benefits/values of using your product over existing products
 - One that can persuade/convince the customers to use your product will win
+

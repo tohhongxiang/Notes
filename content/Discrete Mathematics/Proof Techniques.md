@@ -27,6 +27,8 @@ Proving $P(n) \rightarrow Q(n)$
 2. Prove that this assumption is a contradiction $\neg (P(n) \rightarrow Q(n)) \rightarrow C \land \neg C$
 3. This is equivalent to $P(n) \rightarrow Q(n)$
 
+E.g. Prove that $\sqrt 2$ is irrational
+
 # Proof by Contrapositive
 
 $$

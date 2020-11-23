@@ -340,8 +340,6 @@ An argument may be invalid but still draw a correct conclusion
 # Inference Rules
 A **rule of inference** is a logical construct which takes premises, analyses their syntax and returns a conclusion
 
-
-
 **Modus Tollens** (Method of Denying)
 
 Name | Definition

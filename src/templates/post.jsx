@@ -9,12 +9,11 @@ import Scrollspy from 'react-scrollspy'
 
 export default function BlogPost({ data }) {
 	const post = data.mdx
-	console.log(post)
 
 	return (
 		<Layout title={post.frontmatter.title}>
 			<div className="mx-auto flex relative">
-				<div className="max-w-3xl mx-auto markdown-body p-2 w-full">
+				<div className="max-w-3xl markdown-body mx-auto p-2 w-full">
 					<MDXRenderer>{post.body}</MDXRenderer>
 				</div>
 				{post.tableOfContents.items && <div className="relative w-1/5">

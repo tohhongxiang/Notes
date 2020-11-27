@@ -1,5 +1,7 @@
 # Module 1
 
+These are notes on the course [**Strategic Innovation: Building and Sustaining Innovation**](https://www.coursera.org/learn/strategic-innovation-building-and-sustaining-innovative-organizations)
+
 # What is innovation?
 - The coming up of new ideas
 - Improving existing ideas

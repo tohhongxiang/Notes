@@ -198,7 +198,9 @@ Ux = y \text{(Solve for $x$ by backward substitution)}
 \end{aligned}
 $$
 
-E.g. Solve $$
+E.g. Solve 
+
+$$
 Ax = b, A = 
 \begin{bmatrix}
 3 & -7 & -2 & 2 \\
@@ -216,7 +218,8 @@ Ax = b, A =
 0 & 0 & -1 & 1 \\
 0 & 0 & 0 & -1
 \end{bmatrix}
-$$ and $b = \begin{bmatrix} -9 \\ 5 \\ 7 \\ 11 \end{bmatrix}$
+$$ 
+and $b = \begin{bmatrix} -9 \\ 5 \\ 7 \\ 11 \end{bmatrix}$
 
 First, we can solve $Ly = b$ using an augmented matrix of $\begin{bmatrix} L \\ b \end{bmatrix}$
 $$

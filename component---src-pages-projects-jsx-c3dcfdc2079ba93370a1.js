@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{hoZb:function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return c})),n.d(t,"query",(function(){return o}));var r=n("q1tI"),a=n.n(r),u=n("L6Je");function c(e){e.data;return a.a.createElement(u.a,{title:"Projects"},a.a.createElement("h1",null,"Projects"))}var o="285709463"}}]);
+//# sourceMappingURL=component---src-pages-projects-jsx-c3dcfdc2079ba93370a1.js.map
